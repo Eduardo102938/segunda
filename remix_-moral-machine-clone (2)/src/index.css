@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-purple-500: #a855f7;
+  --color-purple-400: #c084fc;
+  --color-purple-300: #d8b4fe;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+  }
+
+  body {
+    @apply bg-black text-white antialiased;
+  }
+}
+
+.glass {
+  @apply bg-black/60 backdrop-blur-md border border-white/10;
+}
+
+.selection-purple {
+  @apply selection:bg-purple-500/30;
+}

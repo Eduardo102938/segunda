@@ -1,0 +1,51 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information and social links.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "friends": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["uid", "email"]
+    },
+    "EthicalResult": {
+      "title": "Ethical Result",
+      "description": "A single ethical profile result for a user.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "profile": {
+          "type": "object",
+          "properties": {
+            "savingHumans": { "type": "number" },
+            "savingAnimals": { "type": "number" },
+            "savingYoung": { "type": "number" },
+            "savingElderly": { "type": "number" },
+            "savingHighStatus": { "type": "number" },
+            "savingLowStatus": { "type": "number" },
+            "savingMale": { "type": "number" },
+            "savingFemale": { "type": "number" },
+            "followingLaw": { "type": "number" }
+          }
+        },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "profile", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "User",
+      "description": "User profile data."
+    },
+    "/results/{resultId}": {
+      "schema": "EthicalResult",
+      "description": "Ethical profile results."
+    }
+  }
+}
